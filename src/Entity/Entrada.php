@@ -53,6 +53,10 @@ class Entrada
         $this->etiquetas = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
     }
+    public function __toString()
+    {
+      return $this->titulo;  
+    }
 
     public function getId(): ?int
     {
