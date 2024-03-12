@@ -1,4 +1,27 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="row">
+    <div class="col-12">
+        {{ form_row(form.titulo) }}
+    </div>
+</div>
+<div class="row">
+ <div class="col-6">
+        {{ form_row(form.estado) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.categoria) }}
+    </div>
+</div>
+<div class="row">
+ <div class="col-9">
+        {{ form_row(form.resumen) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.etiquetas) }}
+    </div>
+</div>
+<hr>
+{{ form_row(form.texto) }}
+    {{ form_rest(form) }}
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
