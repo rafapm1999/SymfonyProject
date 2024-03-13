@@ -40,9 +40,7 @@ class EntradaType extends AbstractType
 
                 ]
             ])
-            ->add('texto', TextareaType::class, [
-                'attr' => ['class' => 'richeditor']
-            ])
+            ->add('texto')
             ->add('categoria', EntityType::class, [
                 'label' => 'Categoría',
                 'class' => Categoria::class,
