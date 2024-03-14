@@ -1,11 +1,13 @@
 <div class="position-sticky pt-3">
         <ul class="nav flex-column">
+        {% if is_granted('ROLE_SUPERADMIN') %}
           <li class="nav-item">
             <a class="nav-link" href="{{ path('app_admin_espacio_index') }}">
               <span data-feather="award"></span>
               Espacios
             </a>
           </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{{ path('app_admin_categoria_index') }}">
               <span data-feather="aperture"></span>
