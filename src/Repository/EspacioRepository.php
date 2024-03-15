@@ -21,6 +21,11 @@ class EspacioRepository extends ServiceEntityRepository
         parent::__construct($registry, Espacio::class);
     }
 
+    public function getQueryAll() 
+    {
+        $qb = $this->createQueryBuilder('e');
+        return $qb->getQuery();
+    }
     //    /**
     //     * @return Espacio[] Returns an array of Espacio objects
     //     */
