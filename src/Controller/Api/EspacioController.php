@@ -99,12 +99,22 @@ class EspacioController extends AbstractController
     }
 
     #[Route('/api/espacio/{id}', name: 'app_api_espacio_delete', methods: ['DELETE'])]
-    public function delete($id): Response
+    public function delete($id, EspacioRepository $espacioRepository ): Response
     {
         //Eliminacion del espacio
+        $espacio = $espacioRepository->find($id);
+        if ($espacio == null) {
+            throw $this->createNotFoundException();
+        }
+            try {
+               $espacioRepository->remove($espacio, true);
+            } catch (\Exception $exception) {
+                return $this->json([
+                    'message' => $exception->getMessage()
+                ], 400);
+            }
         return $this->json([
             'result' => 'ok',
-            'usuario' => $this->getUser()->getUserIdentifier()
         ]);
     }
 }

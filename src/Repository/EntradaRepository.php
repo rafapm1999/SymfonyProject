@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Entrada;
+use App\Entity\Espacio;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,26 @@ class EntradaRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Entrada::class);
+    }
+    public function getQueryAll()
+    {
+        $qb = $this->createQueryBuilder('e');
+        return $qb->getQuery();
+    }
+
+    public function add(Espacio $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+    public function remove(Espacio $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
 
     //    /**
