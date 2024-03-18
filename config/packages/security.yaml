@@ -25,6 +25,7 @@ security:
       pattern: ^/api
       stateless: true
       jwt: ~
+      
     main:
       lazy: true
       provider: app_user_provider
@@ -49,7 +50,7 @@ security:
     - { path: ^/admin/espacio, roles: ROLE_SUPERADMIN }
     - { path: ^/admin/usuario, roles: ROLE_USER }
     - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
-    - { path: ^/api/login, roles: PUBLIC_ACCESS }
+    - { path: ^/api/(login|token/refresh), roles: PUBLIC_ACCESS }
     - { path: ^/api/espacio, roles: ROLE_SUPERADMIN }
     - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
